@@ -11,5 +11,5 @@ var (
 )
 
 func main() {
-	print(nodefindergo.GetIndexOfTMRCA("((a,((b,c),(ddd,e))),(f,g));", "b", "ddd"))
+	nodefindergo.Test()
 }
