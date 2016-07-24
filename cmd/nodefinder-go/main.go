@@ -7,6 +7,7 @@ import (
 	"github.com/zxjsdp/nodefinder-go/utils"
 	"flag"
 	"log"
+	"strings"
 )
 
 var (
@@ -16,21 +17,14 @@ var (
 func main() {
 	argInputPtr := flag.String("input", "", "Input Newick tree file name")
 	argConfigPtr := flag.String("config", "", "NodeFinder config file name")
-	argOutputPtr := flag.String("output", "", "Output Newick tree file name")
+	argOutputPrt := flag.String("output", "", "Output Newick tree file name")
 
 	flag.Parse()
 
-	if len(utils.RemoveBlankChars(*argInputPtr)) == 0 {
-		log.Fatal("Invalid input filename: " + *argInputPtr +
-			nodefindergo.USAGE)
-	}
-	if len(utils.RemoveBlankChars(*argConfigPtr)) == 0 {
-		log.Fatal("Invalid config filename: " + *argConfigPtr +
-			nodefindergo.USAGE)
-	}
-	if len(utils.RemoveBlankChars(*argOutputPtr)) == 0 {
-		log.Fatal("Invalid output filename! " + *argOutputPtr +
-			nodefindergo.USAGE)
+	utils.CheckFileExists(*argInputPtr, "-input", nodefindergo.USAGE)
+	utils.CheckFileExists(*argConfigPtr, "-config", nodefindergo.USAGE)
+	if len(strings.TrimSpace(*argOutputPrt)) == 0 {
+		log.Fatal(fmt.Sprintf("[ -output ] Blank argument! %s", nodefindergo.USAGE))
 	}
 
 	if len(flag.Args()) != 0 {
@@ -41,7 +35,7 @@ func main() {
 	rawTreeStr := utils.ReadContent(*argInputPtr)
 	calibrations := nodefindergo.ParseConfig(*argConfigPtr)
 
-	nodefindergo.MultipleCalibration(rawTreeStr, calibrations)
+	output := nodefindergo.MultipleCalibration(rawTreeStr, calibrations)
 
-	//nodefindergo.Test()
+	utils.WriteContent(*argOutputPrt, output)
 }

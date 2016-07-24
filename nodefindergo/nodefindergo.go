@@ -5,7 +5,6 @@ import (
 	"strings"
 	"fmt"
 	"log"
-	"flag"
 )
 
 const (
