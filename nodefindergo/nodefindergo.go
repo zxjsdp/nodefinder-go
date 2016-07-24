@@ -19,7 +19,8 @@ const (
 	DEFAULT_CALI_OR_CLADE_LABEL_DESCRIPTION = "Normal calibration or clade label."
 	DEFAULT_BRANCH_LABEL_DESCRIPTION = "Branch label description"
 
-	USAGE = "\nUSAGE: nodefindergo -input=input.nwk -config=config.txt -output=output.nwk\n"
+	USAGE = "\n\n[ USAGE ] nodefindergo -input=input.nwk " +
+		"-config=config.txt -output=output.nwk\n\n"
 )
 
 var (
