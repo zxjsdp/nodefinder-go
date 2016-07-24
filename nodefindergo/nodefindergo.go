@@ -5,6 +5,7 @@ import (
 	"strings"
 	"fmt"
 	"log"
+	"flag"
 )
 
 const (
@@ -18,6 +19,8 @@ const (
 
 	DEFAULT_CALI_OR_CLADE_LABEL_DESCRIPTION = "Normal calibration or clade label."
 	DEFAULT_BRANCH_LABEL_DESCRIPTION = "Branch label description"
+
+	USAGE = "\nUSAGE: nodefindergo -input=input.nwk -config=config.txt -output=output.nwk\n"
 )
 
 var (
@@ -122,7 +125,7 @@ func MultipleCalibration(rawTreeStr string, calibrations []Calibration) string {
 	return strings.Replace(rawTreeStr, ",", ", ", -1)
 }
 
-func parseConfig(configFileName string) []Calibration {
+func ParseConfig(configFileName string) []Calibration {
 	calibrations := []Calibration{};
 	lines := utils.ReadLines(configFileName)
 	for index, line := range lines {
@@ -160,7 +163,7 @@ func Test() {
 	//}
 
 	//print(MultipleCalibration(rawTreeStr, calibrations))
-	calibrations := parseConfig(
+	calibrations := ParseConfig(
 		"/Users/jin/go/src/github.com/zxjsdp/nodefinder-go/nodefindergo_tests/calibration.txt")
 	print(MultipleCalibration(rawTreeStr, calibrations))
 }

@@ -4,6 +4,7 @@ import (
 	"os"
 	"log"
 	"bufio"
+	"strings"
 )
 
 func ReadLines(fileName string) []string {
@@ -25,4 +26,20 @@ func ReadLines(fileName string) []string {
 	}
 
 	return lines
+}
+
+func ReadContent(filename string) string {
+	lines := ReadLines(filename)
+
+	return strings.Join(lines, "\n")
+}
+
+func ReadCleanContent(filename string, runeListToBeRemoved []rune) string {
+	rawContent := ReadContent(filename)
+
+	for _, rune := range runeListToBeRemoved {
+		rawContent = RemoveChar(rawContent, rune)
+	}
+
+	return rawContent
 }
