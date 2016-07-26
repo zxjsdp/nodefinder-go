@@ -7,12 +7,15 @@ Please visit [NodeFinderGUI](https://github.com/zxjsdp/NodeFinderGUI) and [NodeF
 
 Please visit [NodeFinderC](https://github.com/zxjsdp/NodeFinderC) for C implementation of NodeFinder program.
 
-Download
---------
+Install
+-------
 
+    go install github.com/zxjsdp/nodefinder-go
 
 Usage
 -----
+
+    nodefinder-go -input input.nwk -config config.txt -output output.nwk
 
 
 
