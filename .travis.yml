@@ -7,8 +7,8 @@ go:
 env:
   - "PATH=/home/travis/gopath/bin:$PATH"
 
-before_install:
-  - echo -e "machine github.com\n  login zxjsdp\n  password $CI_USER_TOKEN" >> ~/.netrc
+#before_install:
+#  - echo -e "machine github.com\n  login zxjsdp\n  password $CI_USER_TOKEN" >> ~/.netrc
 #  - go get github.com/mitchellh/gox
 #  - gox -build-toolchain
 #  - go get github.com/tcnksm/ghr
