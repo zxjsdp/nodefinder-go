@@ -24,11 +24,11 @@ func main() {
 	utils.CheckFileExists(*argInputPtr, "-input", nodefindergo.USAGE)
 	utils.CheckFileExists(*argConfigPtr, "-config", nodefindergo.USAGE)
 	if len(strings.TrimSpace(*argOutputPrt)) == 0 {
-		log.Fatal(fmt.Sprintf("[ -output ] Blank argument! %s", nodefindergo.USAGE))
+		log.Fatal(fmt.Sprintf("ERROR! Blank argument for [ -output ].%s", nodefindergo.USAGE))
 	}
 
 	if len(flag.Args()) != 0 {
-		log.Fatal("Invalid command line options! " +
+		log.Fatal("Invalid command line option number! " +
 			nodefindergo.USAGE)
 	}
 

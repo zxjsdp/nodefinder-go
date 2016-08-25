@@ -18,11 +18,11 @@ func RemoveChar(str string, runeToBeRemoved rune) string {
 		if r != runeToBeRemoved {
 			return r
 		}
-		return 0
+		return -1
 	}, str)
 }
 
-func RemoveBlankChars(str string) string {
+func ReplaceBlankChars(str string) string {
 	return strings.Map(func(r rune) rune {
 		if unicode.IsSpace(r) {
 			return '_'
@@ -31,7 +31,7 @@ func RemoveBlankChars(str string) string {
 	}, str)
 }
 
-func CheckRuneExistsInString(str, subString string) bool {
+func CheckSubStringExistsInString(str, subString string) bool {
 	index := strings.Index(str, subString)
 	if index >= 0 {
 		return true

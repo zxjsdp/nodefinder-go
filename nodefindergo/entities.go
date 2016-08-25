@@ -1,10 +1,10 @@
 package nodefindergo
 
 type Calibration struct {
-	id int;
-	caliType string;
-	nameA string;
-	nameB string;
-	caliInfo string;
-	description string
+	ID          int;
+	CaliType    string;
+	NameA       string;
+	NameB       string;
+	CaliInfo    string;
+	Description string
 }
