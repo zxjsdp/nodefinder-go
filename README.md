@@ -11,7 +11,7 @@ Go implementation of NodeFinder program.
 Install
 -------
 
-    $ go install github.com/zxjsdp/nodefinder-go
+    $ go install github.com/zxjsdp/nodefinder-go/cmd/nodefinder-go
 
 Usage
 -----
