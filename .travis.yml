@@ -6,11 +6,12 @@ go:
  - 1.7
 
 before_install:
-  - cp .netrc ~
-  - chmod 600 .netrc
+  - echo -e "machine github.com\n  login zxjsdp\n  password $CI_USER_TOKEN" >> ~/.netrc
 
-#install:
-#  - go get github.com/zxjsdp/nodefinder-go/cmd/nodefinder-go
+install:
+  - git clone https://zxjsdp:$CI_USER_TOKEN@github.com/$TRAVIS_REPO_SLUG.git $TRAVIS_REPO_SLUG
+  - cd $TRAVIS_REPO_SLUG
+  - git checkout -qf $TRAVIS_COMMIT
 
 script:
  - go test -v ./...
