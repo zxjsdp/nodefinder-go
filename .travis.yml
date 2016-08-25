@@ -2,8 +2,8 @@ language: go
 go:
  - 1.2
  - 1.5
- - release
- - tip
+ - 1.6
+ - 1.7
 
 before_install:
   - cp .netrc ~
