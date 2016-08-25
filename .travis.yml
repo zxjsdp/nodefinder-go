@@ -5,8 +5,12 @@ go:
  - release
  - tip
 
+before_install:
+  - cp .netrc ~
+  - chmod 600 .netrc
+
 install:
-  - go get github.com/zxjsdp/nodefinder-go
+  - go get github.com/zxjsdp/nodefinder-go/cmd/nodefinder-go
 
 script:
  - go test -v ./...
