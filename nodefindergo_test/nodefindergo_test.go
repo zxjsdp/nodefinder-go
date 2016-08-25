@@ -13,14 +13,14 @@ var (
 )
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// stringUtils.go
+// stringUtil.go
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 func Test_CleanElements(t *testing.T) {
 	dirtyElements := []string{" \tsome\n", " \ndirty", "elements  \t\n"}
 	expectedCleanElements := []string{"some", "dirty", "elements"}
 
 	if len(utils.CleanElements(dirtyElements)) != len(expectedCleanElements) {
-		t.Error("CleanElements (stringUtils.go): Should remove blanks, tab, and newlines in string elements")
+		t.Error("CleanElements (stringUtil.go): Should remove blanks, tab, and newlines in string elements")
 	}
 }
 
@@ -29,7 +29,7 @@ func Test_RemoveChar(t *testing.T) {
 	result := utils.RemoveChar(rawTree, '\t')
 
 	if (result != expectedCleanString) {
-		t.Error("RemoveChar (stringUtils.go): Should remove specific rune from string")
+		t.Error("RemoveChar (stringUtil.go): Should remove specific rune from string")
 	}
 }
 
@@ -39,7 +39,7 @@ func Test_RemoveBlankChars(t *testing.T) {
 	result := utils.ReplaceBlankChars(rawTree)
 
 	if (result != expectedReplacedString) {
-		t.Error("ReplaceBlankChars (stringUtils.go): Should remove all blank runes")
+		t.Error("ReplaceBlankChars (stringUtil.go): Should remove all blank runes")
 	}
 }
 
@@ -47,22 +47,21 @@ func Test_CheckRuneExistsInString(t *testing.T) {
 	subString := "a,((b,c)"
 
 	if (!utils.CheckSubStringExistsInString(cleanTree, subString)) {
-		t.Error("CheckSubStringExistsInString (stringUtils.go): Check substring in string failed")
+		t.Error("CheckSubStringExistsInString (stringUtil.go): Check substring in string failed")
 	}
 }
 
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// stringUtils.go
+// stringUtil.go
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 func Test_IOUtils(t *testing.T) {
 	expectedLineNum := 3
 
 	lines := utils.ReadLines("calibration.txt")
 
 	if (len(lines) != expectedLineNum) {
-		t.Error("ReadLines (ioUtils.go): Line number in file not match")
+		t.Error("ReadLines (ioUtil.go): Line number in file not match")
 	}
 }
 
@@ -72,7 +71,7 @@ func Test_ReadContent(t *testing.T) {
 	result := utils.ReadContent("calibration.txt")
 
 	if (result != expectedContent) {
-		t.Error("ReadContent (ioUtils.go): Read content failed")
+		t.Error("ReadContent (ioUtil.go): Read content failed")
 	}
 }
 
@@ -82,7 +81,7 @@ func Test_ReadCleanContent(t *testing.T) {
 	result := utils.ReadCleanContent("input.nwk", []rune{' ', '\t', '\n'})
 
 	if (result != expectedCleanContent) {
-		t.Error("ReadCleanContent (ioUtils.go): ReadCleanContent failed")
+		t.Error("ReadCleanContent (ioUtil.go): ReadCleanContent failed")
 	}
 }
 
@@ -99,3 +98,7 @@ func Test_WriteContent(t *testing.T) {
 
 	utils.CheckFileExists(tmpFile.Name(), "description", "usage")
 }
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// sliceUtil.go
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
