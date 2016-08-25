@@ -21,4 +21,4 @@ Usage
 Run Tests
 ---------
 
-    $ cd nodefindergo_test && go test -v -tags integration
+    $ cd $GOPATH/src/github.com/zxjsdp/nodefinder-go/ && go test -v ./...
