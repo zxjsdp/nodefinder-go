@@ -10,12 +10,18 @@ Please visit [NodeFinderC](https://github.com/zxjsdp/NodeFinderC) for C implemen
 Install
 -------
 
-    go install github.com/zxjsdp/nodefinder-go
+    $ go install github.com/zxjsdp/nodefinder-go
 
 Usage
 -----
 
-    nodefinder-go -input input.nwk -config config.txt -output output.nwk
+    $ nodefinder-go -input input.nwk -config config.txt -output output.nwk
+    
+If you just want to try it:
 
+    $ go run github.com/zxjsdp/nodefinder-go/cmd/nodefinder-go/main.go -input input.nwk -config config.txt -output output.nwk
 
+Run Tests
+---------
 
+    $ cd nodefindergo_test && go test -v -tags integration
