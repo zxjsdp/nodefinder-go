@@ -1,0 +1,13 @@
+language: go
+go:
+ - 1.2
+ - 1.5
+ - release
+ - tip
+
+install:
+  - go get github.com/zxjsdp/nodefinder-go
+
+script:
+ - go test -v ./...
+
