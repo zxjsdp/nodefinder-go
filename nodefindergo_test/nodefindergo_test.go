@@ -3,6 +3,8 @@ package nodefindergo_test
 import (
 	"github.com/zxjsdp/nodefinder-go/utils"
 	"testing"
+	"io/ioutil"
+	"os"
 )
 
 var (
@@ -90,9 +92,10 @@ func Test_CheckFileExists(t *testing.T) {
 
 func Test_WriteContent(t *testing.T) {
 	contentToBeWritten := "the fox jumped over the lazy dog"
-	fileName := "testWrite.tmp"
+	tmpFile, _ := ioutil.TempFile(os.TempDir(), "testWrite")
+	defer os.Remove(tmpFile.Name())
 
-	utils.WriteContent(fileName, contentToBeWritten)
+	utils.WriteContent(tmpFile.Name(), contentToBeWritten)
 
-	utils.CheckFileExists(fileName, "description", "usage")
+	utils.CheckFileExists(tmpFile.Name(), "description", "usage")
 }
