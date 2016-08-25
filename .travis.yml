@@ -1,0 +1,24 @@
+language: go
+go:
+  - 1.5
+  - 1.6
+  - 1.7
+
+env:
+  - "PATH=/home/travis/gopath/bin:$PATH"
+
+#before_install:
+#  - echo -e "machine github.com\n  login zxjsdp\n  password $CI_USER_TOKEN" >> ~/.netrc
+#  - go get github.com/mitchellh/gox
+#  - gox -build-toolchain
+#  - go get github.com/tcnksm/ghr
+#  - go get github.com/axw/gocov/gocov
+#  - go get github.com/mattn/goveralls
+#  - go get code.google.com/p/go.tools/cmd/cover
+
+install:
+  - go get github.com/zxjsdp/nodefinder-go/cmd/nodefinder-go
+
+script:
+  - go test -v ./...
+
