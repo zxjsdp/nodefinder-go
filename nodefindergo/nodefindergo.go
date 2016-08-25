@@ -28,7 +28,7 @@ var (
 	print = fmt.Println
 )
 
-func getCleanTreeStr(rawTreeStr string) string {
+func GetCleanTreeStr(rawTreeStr string) string {
 	newTreeStr := utils.RemoveChar(rawTreeStr, ' ')
 	newTreeStr = utils.RemoveChar(newTreeStr, '\n')
 	newTreeStr = utils.RemoveChar(newTreeStr, '\t')
@@ -36,7 +36,7 @@ func getCleanTreeStr(rawTreeStr string) string {
 	return newTreeStr
 }
 
-func getRightIndexOfName(cleanTreeStr, name string) int {
+func GetRightIndexOfName(cleanTreeStr, name string) int {
 	leftIndexOfName := strings.Index(cleanTreeStr, name)
 	for !utils.CheckRuneInRunesV2(NOT_TREE_NAME_SYMBOLS, []rune(cleanTreeStr)[leftIndexOfName]) {
 		leftIndexOfName += 1
@@ -44,7 +44,7 @@ func getRightIndexOfName(cleanTreeStr, name string) int {
 	return leftIndexOfName
 }
 
-func getInsertionList(cleanTreeStr, name string) []int {
+func GetInsertionList(cleanTreeStr, name string) []int {
 	insertionList := []int{}
 	currentIndex := strings.Index(cleanTreeStr, name)
 	stack := []rune{}
@@ -66,10 +66,10 @@ func getInsertionList(cleanTreeStr, name string) []int {
 	return insertionList
 }
 
-func getIndexOfTMRCA(cleanTreeStr, nameA, nameB string) int {
+func GetIndexOfTMRCA(cleanTreeStr, nameA, nameB string) int {
 	var indexOfTMRCA int
-	insertionListA := getInsertionList(cleanTreeStr, nameA)
-	insertionListB := getInsertionList(cleanTreeStr, nameB)
+	insertionListA := GetInsertionList(cleanTreeStr, nameA)
+	insertionListB := GetInsertionList(cleanTreeStr, nameB)
 
 	utils.Reverse(insertionListA)
 	utils.Reverse(insertionListB)
@@ -89,9 +89,9 @@ func getIndexOfTMRCA(cleanTreeStr, nameA, nameB string) int {
 	return indexOfTMRCA
 }
 
-func singleCalibration(rawTreeStr, nameA, nameB, caliInfo string) string {
-	cleanTreeStr := getCleanTreeStr(rawTreeStr)
-	insertionPoint := getIndexOfTMRCA(cleanTreeStr, nameA, nameB)
+func SingleCalibration(rawTreeStr, nameA, nameB, caliInfo string) string {
+	cleanTreeStr := GetCleanTreeStr(rawTreeStr)
+	insertionPoint := GetIndexOfTMRCA(cleanTreeStr, nameA, nameB)
 
 	leftPart := cleanTreeStr[:insertionPoint]
 	rightPart := cleanTreeStr[insertionPoint:]
@@ -100,9 +100,9 @@ func singleCalibration(rawTreeStr, nameA, nameB, caliInfo string) string {
 	return cleanTreeStr
 }
 
-func addSingleBranchLabel(rawTreeStr, nameA, branchLabel string) string {
-	cleanTreeStr := getCleanTreeStr(rawTreeStr)
-	insertionPoint := getRightIndexOfName(cleanTreeStr, nameA)
+func AddSingleBranchLabel(rawTreeStr, nameA, branchLabel string) string {
+	cleanTreeStr := GetCleanTreeStr(rawTreeStr)
+	insertionPoint := GetRightIndexOfName(cleanTreeStr, nameA)
 
 	leftPart := cleanTreeStr[:insertionPoint]
 	rightPart := cleanTreeStr[insertionPoint:]
@@ -113,10 +113,10 @@ func addSingleBranchLabel(rawTreeStr, nameA, branchLabel string) string {
 
 func MultipleCalibration(rawTreeStr string, calibrations []Calibration) string {
 	for index, cali := range calibrations {
-		if cali.caliType == CALI_OR_CLADE_LABEL_TYPE {
-			rawTreeStr = singleCalibration(rawTreeStr, cali.nameA, cali.nameB, cali.caliInfo)
-		} else if cali.caliType == BRANCH_LABEL_TYPE {
-			rawTreeStr = addSingleBranchLabel(rawTreeStr, cali.nameA, cali.caliInfo)
+		if cali.CaliType == CALI_OR_CLADE_LABEL_TYPE {
+			rawTreeStr = SingleCalibration(rawTreeStr, cali.NameA, cali.NameB, cali.CaliInfo)
+		} else if cali.CaliType == BRANCH_LABEL_TYPE {
+			rawTreeStr = AddSingleBranchLabel(rawTreeStr, cali.NameA, cali.CaliInfo)
 		} else {
 			log.Panic("Invalid calibration!")
 		}
