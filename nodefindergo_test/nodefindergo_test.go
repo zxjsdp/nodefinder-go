@@ -5,6 +5,7 @@ import (
 	"testing"
 	"io/ioutil"
 	"os"
+	"reflect"
 )
 
 var (
@@ -102,3 +103,62 @@ func Test_WriteContent(t *testing.T) {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // sliceUtil.go
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+func Test_CheckRuneInRunesV2_CheckTrue(t *testing.T) {
+	runes := []rune{'*', '#', '$', '%'}
+	runeInRunes := '*'
+
+	if !(utils.CheckRuneInRunesV2(runes, runeInRunes)) {
+		t.Error("CheckRuneInRunesV2 (sliceUtil.go): Rune in runes check failed (Rune in runes)")
+	}
+}
+
+func Test_CheckRuneInRunesV2_CheckFalse(t *testing.T) {
+	runes := []rune{'*', '#', '$', '%'}
+	runeNotInRunes := '&'
+
+	if (utils.CheckRuneInRunesV2(runes, runeNotInRunes)) {
+		t.Error("CheckRuneInRunesV2 (sliceUtil.go): Rune in runes check failed (Rune not in runes)")
+	}
+}
+
+func Test_CheckRuneInRunesV1_CheckTrue(t *testing.T) {
+	runes := []rune{'*', '#', '$', '%'}
+	runeInRunes := '*'
+
+	if !(utils.CheckRuneInRunesV1(runes, runeInRunes)) {
+		t.Error("CheckRuneInRunesV1 (sliceUtil.go): Rune in runes check failed (Rune in runes)")
+	}
+}
+
+func Test_CheckRuneInRunesV1_CheckFalse(t *testing.T) {
+	runes := []rune{'*', '#', '$', '%'}
+	runeNotInRunes := '&'
+
+	if (utils.CheckRuneInRunesV1(runes, runeNotInRunes)) {
+		t.Error("CheckRuneInRunesV1 (sliceUtil.go): Rune in runes check failed (Rune not in runes)")
+	}
+}
+
+func Test_Reverse(t *testing.T) {
+	originalSlice := []int{2, 5, 3, 7, 1}
+	expectedSlice := []int{1, 7, 3, 5, 2}
+
+	utils.Reverse(originalSlice)
+
+	if (!reflect.DeepEqual(originalSlice, expectedSlice)) {
+		t.Error("Reverse (sliceUtil.go): Reverse int slice failed")
+	}
+}
+
+func Test_FindLongerAndShorterArray(t *testing.T) {
+	shorterArray := []int{2, 5, 1, 9}
+	longerArray := []int{8, 2, 0, 5, 1, 9, 10}
+
+	newLongerArray, newShorterArray := utils.FindLongerAndShorterArray(shorterArray, longerArray)
+
+	if (!reflect.DeepEqual(newLongerArray, longerArray) ||
+			!reflect.DeepEqual(newShorterArray, shorterArray)) {
+		t.Error("FindLongerAndShorterArray (sliceUtil.go): Finder longer array and shorter array failed")
+	}
+}
