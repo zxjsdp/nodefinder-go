@@ -20,7 +20,7 @@ before_install:
 #  - git clone https://zxjsdp:$CI_USER_TOKEN@github.com/$TRAVIS_REPO_SLUG.git $TRAVIS_REPO_SLUG
 #  - cd $TRAVIS_REPO_SLUG
 #  - git checkout -qf $TRAVIS_COMMIT
-  - go install github.com/zxjsdp/nodefinder-go/cmd/nodefinder-go
+  - go get github.com/zxjsdp/nodefinder-go/cmd/nodefinder-go
 
 script:
   - go test -v ./...
