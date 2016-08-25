@@ -1,7 +1,7 @@
 NodeFinderGo
 ============
 
-[![Build Status](https://travis-ci.org/zxjsdp/NodeFinderGo.svg?branch=master)](https://travis-ci.org/zxjsdp/NodeFinderGo)
+[![Build Status](https://travis-ci.org/zxjsdp/nodefinder-go.svg?branch=master)](https://travis-ci.org/zxjsdp/NodeFinderGo)
 
 Go implementation of NodeFinder program.
 
