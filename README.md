@@ -22,3 +22,10 @@ Run Tests
 ---------
 
     $ cd $GOPATH/src/github.com/zxjsdp/nodefinder-go/ && go test -v ./...
+
+Config Syntax
+-------------
+
+    name_a, name_b, calibration
+    name_a, name_b, clade_label
+    name_a, branch_label
