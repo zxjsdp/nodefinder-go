@@ -22,3 +22,15 @@ Run Tests
 ---------
 
     $ cd $GOPATH/src/github.com/zxjsdp/nodefinder-go/ && go test -v ./...
+
+Config Syntax
+-------------
+
+    # lines startswith # with be ignored
+    # you can add one or multiple calibrations in single config file
+
+    name_a, name_b, calibration_infomation_1
+    name_c, name_d, calibration_infomation_2
+    name_a, name_b, clade_label_information
+    name, branch_label_information
+    ..., ..., ...
