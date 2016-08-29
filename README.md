@@ -26,6 +26,11 @@ Run Tests
 Config Syntax
 -------------
 
-    name_a, name_b, calibration
-    name_a, name_b, clade_label
-    name_a, branch_label
+    # lines startswith # with be ignored
+    # you can add one or multiple calibrations in single config file
+
+    name_a, name_b, calibration_infomation_1
+    name_c, name_d, calibration_infomation_2
+    name_a, name_b, clade_label_information
+    name, branch_label_information
+    ..., ..., ...
