@@ -1,9 +1,9 @@
 NodeFinderGo
 ============
 
-[![Build Status](https://travis-ci.org/zxjsdp/nodefinder-go.svg?branch=master)](https://travis-ci.org/zxjsdp/NodeFinderGo)
+[![Build Status](https://travis-ci.org/zxjsdp/nodefinder-go.svg?branch=master)](https://travis-ci.org/zxjsdp/nodefinder-go)
 
-Go implementation of NodeFinder program.
+Go implementation of NodeFinder program. You can add multiple calibrations, clade labels, and branch labels with nodefinder-go at the same time. 
 
 - Please visit [NodeFinderGUI](https://github.com/zxjsdp/NodeFinderGUI) and [NodeFinder](https://github.com/zxjsdp/NodeFinder) for Python implementation of NodeFinder program.
 - Please visit [NodeFinderC](https://github.com/zxjsdp/NodeFinderC) for C implementation of NodeFinder program.

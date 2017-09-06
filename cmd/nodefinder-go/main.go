@@ -3,15 +3,12 @@ package main
 import (
 	"fmt"
 
-	"github.com/zxjsdp/nodefinder-go/nodefindergo"
-	"github.com/zxjsdp/nodefinder-go/utils"
 	"flag"
 	"log"
 	"strings"
-)
 
-var (
-	print = fmt.Println
+	"github.com/zxjsdp/nodefinder-go/nodefindergo"
+	"github.com/zxjsdp/nodefinder-go/utils"
 )
 
 func main() {
@@ -28,8 +25,7 @@ func main() {
 	}
 
 	if len(flag.Args()) != 0 {
-		log.Fatal("Invalid command line option number! " +
-			nodefindergo.USAGE)
+		log.Fatal("Invalid command line option number! " + nodefindergo.USAGE)
 	}
 
 	rawTreeStr := utils.ReadContent(*argInputPtr)
