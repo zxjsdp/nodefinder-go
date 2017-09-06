@@ -1,7 +1,7 @@
 NodeFinderGo
 ============
 
-[![Build Status](https://travis-ci.org/zxjsdp/nodefinder-go.svg?branch=master)](https://travis-ci.org/zxjsdp/NodeFinderGo)
+[![Build Status](https://travis-ci.org/zxjsdp/nodefinder-go.svg?branch=master)](https://travis-ci.org/zxjsdp/nodefinder-go)
 
 Go implementation of NodeFinder program. You can add multiple calibrations, clade labels, and branch labels with nodefinder-go at the same time. 
 
