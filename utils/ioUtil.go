@@ -1,12 +1,12 @@
 package utils
 
 import (
-	"os"
-	"log"
 	"bufio"
-	"strings"
 	"fmt"
 	"io/ioutil"
+	"log"
+	"os"
+	"strings"
 )
 
 func ReadLines(fileName string) []string {

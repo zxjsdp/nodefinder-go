@@ -1,10 +1,11 @@
 package nodefindergo
 
 import (
-	"github.com/zxjsdp/nodefinder-go/utils"
-	"strings"
 	"fmt"
 	"log"
+	"strings"
+
+	"github.com/zxjsdp/nodefinder-go/utils"
 )
 
 const (
@@ -17,15 +18,15 @@ const (
 	BLANK_NAME_B = ""
 
 	DEFAULT_CALI_OR_CLADE_LABEL_DESCRIPTION = "Normal calibration or clade label."
-	DEFAULT_BRANCH_LABEL_DESCRIPTION = "Branch label description"
+	DEFAULT_BRANCH_LABEL_DESCRIPTION        = "Branch label description"
 
 	USAGE = "\n\n[ USAGE ] nodefindergo -input input.nwk " +
-		"-config config.txt -output output.nwk\n\n"
+		"-config config.txt -output output.nwk\n[ USAGE ] Please try `nodefinder-go -h` for help.\n"
 )
 
 var (
-	NOT_TREE_NAME_SYMBOLS []rune = []rune {',', ';', ')', '"', '#', '$', '@', '>', '<'}
-	print = fmt.Println
+	NOT_TREE_NAME_SYMBOLS []rune = []rune{',', ';', ')', '"', '#', '$', '@', '>', '<'}
+	print                        = fmt.Println
 )
 
 func GetCleanTreeStr(rawTreeStr string) string {
@@ -55,7 +56,7 @@ func GetInsertionList(cleanTreeStr, name string) []int {
 			stack = append(stack, '(')
 		} else if cleanTreeStr[currentIndex] == ')' {
 			if len(stack) == 0 {
-				insertionList = append(insertionList, currentIndex + 1)
+				insertionList = append(insertionList, currentIndex+1)
 			} else {
 				stack = append(stack[:len(stack)-1])
 			}
@@ -78,11 +79,11 @@ func GetIndexOfTMRCA(cleanTreeStr, nameA, nameB string) int {
 		insertionListA, insertionListB)
 
 	for index, insertionPoint := range shorterInsertionList {
-		if index == len(shorterInsertionList) - 1 {
+		if index == len(shorterInsertionList)-1 {
 			indexOfTMRCA = insertionPoint
 		}
 		if shorterInsertionList[index] != longerInsertionList[index] {
-			indexOfTMRCA = shorterInsertionList[index - 1]
+			indexOfTMRCA = shorterInsertionList[index-1]
 			break
 		}
 	}
@@ -126,7 +127,7 @@ func MultipleCalibration(rawTreeStr string, calibrations []Calibration) string {
 }
 
 func ParseConfig(configFileName string) []Calibration {
-	calibrations := []Calibration{};
+	calibrations := []Calibration{}
 	lines := utils.ReadLines(configFileName)
 	for index, line := range lines {
 		line = strings.TrimSpace(line)
