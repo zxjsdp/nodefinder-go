@@ -1,15 +1,16 @@
 package nodefindergo_test
 
 import (
-	"github.com/zxjsdp/nodefinder-go/utils"
-	"testing"
 	"io/ioutil"
 	"os"
 	"reflect"
+	"testing"
+
+	"github.com/zxjsdp/nodefinder-go/utils"
 )
 
 var (
-	rawTree string = "((a, ((b, c), (ddd,\t e))), (f, g));\n\n"
+	rawTree   string = "((a, ((b, c), (ddd,\t e))), (f, g));\n\n"
 	cleanTree string = "((a,((b,c),(ddd,e))),(f,g));"
 )
 
@@ -29,7 +30,7 @@ func Test_RemoveChar(t *testing.T) {
 	expectedCleanString := "((a, ((b, c), (ddd, e))), (f, g));\n\n"
 	result := utils.RemoveChar(rawTree, '\t')
 
-	if (result != expectedCleanString) {
+	if result != expectedCleanString {
 		t.Error("RemoveChar (stringUtil.go): Should remove specific rune from string")
 	}
 }
@@ -39,7 +40,7 @@ func Test_RemoveBlankChars(t *testing.T) {
 
 	result := utils.ReplaceBlankChars(rawTree)
 
-	if (result != expectedReplacedString) {
+	if result != expectedReplacedString {
 		t.Error("ReplaceBlankChars (stringUtil.go): Should remove all blank runes")
 	}
 }
@@ -47,11 +48,10 @@ func Test_RemoveBlankChars(t *testing.T) {
 func Test_CheckRuneExistsInString(t *testing.T) {
 	subString := "a,((b,c)"
 
-	if (!utils.CheckSubStringExistsInString(cleanTree, subString)) {
+	if !utils.CheckSubStringExistsInString(cleanTree, subString) {
 		t.Error("CheckSubStringExistsInString (stringUtil.go): Check substring in string failed")
 	}
 }
-
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // stringUtil.go
@@ -61,7 +61,7 @@ func Test_IOUtils(t *testing.T) {
 
 	lines := utils.ReadLines("calibration.txt")
 
-	if (len(lines) != expectedLineNum) {
+	if len(lines) != expectedLineNum {
 		t.Error("ReadLines (ioUtil.go): Line number in file not match")
 	}
 }
@@ -71,7 +71,7 @@ func Test_ReadContent(t *testing.T) {
 
 	result := utils.ReadContent("calibration.txt")
 
-	if (result != expectedContent) {
+	if result != expectedContent {
 		t.Error("ReadContent (ioUtil.go): Read content failed")
 	}
 }
@@ -81,7 +81,7 @@ func Test_ReadCleanContent(t *testing.T) {
 
 	result := utils.ReadCleanContent("input.nwk", []rune{' ', '\t', '\n'})
 
-	if (result != expectedCleanContent) {
+	if result != expectedCleanContent {
 		t.Error("ReadCleanContent (ioUtil.go): ReadCleanContent failed")
 	}
 }
@@ -117,7 +117,7 @@ func Test_CheckRuneInRunesV2_CheckFalse(t *testing.T) {
 	runes := []rune{'*', '#', '$', '%'}
 	runeNotInRunes := '&'
 
-	if (utils.CheckRuneInRunesV2(runes, runeNotInRunes)) {
+	if utils.CheckRuneInRunesV2(runes, runeNotInRunes) {
 		t.Error("CheckRuneInRunesV2 (sliceUtil.go): Rune in runes check failed (Rune not in runes)")
 	}
 }
@@ -135,7 +135,7 @@ func Test_CheckRuneInRunesV1_CheckFalse(t *testing.T) {
 	runes := []rune{'*', '#', '$', '%'}
 	runeNotInRunes := '&'
 
-	if (utils.CheckRuneInRunesV1(runes, runeNotInRunes)) {
+	if utils.CheckRuneInRunesV1(runes, runeNotInRunes) {
 		t.Error("CheckRuneInRunesV1 (sliceUtil.go): Rune in runes check failed (Rune not in runes)")
 	}
 }
@@ -146,7 +146,7 @@ func Test_Reverse(t *testing.T) {
 
 	utils.Reverse(originalSlice)
 
-	if (!reflect.DeepEqual(originalSlice, expectedSlice)) {
+	if !reflect.DeepEqual(originalSlice, expectedSlice) {
 		t.Error("Reverse (sliceUtil.go): Reverse int slice failed")
 	}
 }
@@ -157,8 +157,8 @@ func Test_FindLongerAndShorterArray(t *testing.T) {
 
 	newLongerArray, newShorterArray := utils.FindLongerAndShorterArray(shorterArray, longerArray)
 
-	if (!reflect.DeepEqual(newLongerArray, longerArray) ||
-			!reflect.DeepEqual(newShorterArray, shorterArray)) {
+	if !reflect.DeepEqual(newLongerArray, longerArray) ||
+		!reflect.DeepEqual(newShorterArray, shorterArray) {
 		t.Error("FindLongerAndShorterArray (sliceUtil.go): Finder longer array and shorter array failed")
 	}
 }
