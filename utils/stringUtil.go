@@ -5,6 +5,7 @@ import (
 	"unicode"
 )
 
+// CleanElements clean whitespaces in strings.
 func CleanElements(strList []string) []string {
 	for index, each := range strList {
 		each = strings.TrimSpace(each)
@@ -13,6 +14,7 @@ func CleanElements(strList []string) []string {
 	return strList
 }
 
+// RemoveChar removes rune from string.
 func RemoveChar(str string, runeToBeRemoved rune) string {
 	return strings.Map(func(r rune) rune {
 		if r != runeToBeRemoved {
@@ -22,6 +24,7 @@ func RemoveChar(str string, runeToBeRemoved rune) string {
 	}, str)
 }
 
+// ReplaceBlankChars replaces blank chars in string with _.
 func ReplaceBlankChars(str string) string {
 	return strings.Map(func(r rune) rune {
 		if unicode.IsSpace(r) {
@@ -31,6 +34,7 @@ func ReplaceBlankChars(str string) string {
 	}, str)
 }
 
+// CheckSubStringExistsInString checks whether substring exists in string.
 func CheckSubStringExistsInString(str, subString string) bool {
 	index := strings.Index(str, subString)
 	if index >= 0 {

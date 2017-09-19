@@ -1,3 +1,6 @@
+/*
+	The utils package provides commonly used tools.
+*/
 package utils
 
 import (
@@ -9,6 +12,7 @@ import (
 	"strings"
 )
 
+// ReadLines reads a file and return all the lines.
 func ReadLines(fileName string) []string {
 	var lines []string
 	file, err := os.Open(fileName)
@@ -30,12 +34,14 @@ func ReadLines(fileName string) []string {
 	return lines
 }
 
+// ReadContent reads a file and return file content as a string.
 func ReadContent(filename string) string {
 	lines := ReadLines(filename)
 
 	return strings.Join(lines, "\n")
 }
 
+// ReadCleanContent reads a file and return clean content as a string.
 func ReadCleanContent(filename string, runeListToBeRemoved []rune) string {
 	rawContent := ReadContent(filename)
 
@@ -46,6 +52,7 @@ func ReadCleanContent(filename string, runeListToBeRemoved []rune) string {
 	return rawContent
 }
 
+// CheckFileExists checks whether file exists.
 func CheckFileExists(fileName, description, usage string) {
 	cleanName := strings.TrimSpace(fileName)
 	if len(cleanName) == 0 {
@@ -61,6 +68,7 @@ func CheckFileExists(fileName, description, usage string) {
 	}
 }
 
+// WriteContent write string content to a file.
 func WriteContent(filename, content string) {
 	err := ioutil.WriteFile(filename, []byte(content), 0644)
 	if err != nil {
